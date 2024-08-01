@@ -45,10 +45,13 @@ app.use('/users', usersRouter);
 app.post('/add', function(req, res) {
   let num1 = req.body.n1; //post 는 body get 은 query
   let num2 = req.body.n2;
-  let result = null;
-  if (num1 > 1000){
-    result = Number(num2) * Number(num2);
-  }else result = "false";
+
+  let result = Number(num1) + Number(num2);
+
+  // let result = null;
+  // if (num1 > 1000){
+  //   result = Number(num2) * Number(num2);
+  // }else result = "false";
 
   res.send(result.toString());
 })
