@@ -42,8 +42,9 @@ app.use('/users', usersRouter);
 //   res.send(result.toString());
 // })
 
-const tmpId = "test123"
-const tmpPw = "test123"
+let tmpId = "test123"
+let tmpPw = "test123"
+
 
 app.post('/get_cookie', function(req, res) {
   const cookie = req.cookies.userId;
@@ -60,7 +61,7 @@ app.post('/get_cookie', function(req, res) {
 app.post('/login', function(req,res) {
   let id = req.body.id;
   let pw = req.body.pw;
-  let cookie = req.body.cookie;
+  let cookie = req.body.cookie; //체크여부
   
   if (id===tmpId && pw === tmpPw) {
     if (cookie) {
@@ -75,6 +76,15 @@ app.post('/login', function(req,res) {
   }else {
     res.send("<script>alert('로그인에 실패했습니다.'); location.href='/login';</script>")
   }
+})
+
+app.post('/signUp', function(req, res){
+  let id = req.body.id;
+  let pw = req.body.pw;
+  console.log(id, pw)
+  tmpId = id;
+  tmpPw = pw;
+  res.send("<script>alert('회원가입에 성공했습니다.'); location.href='/login';</script>")
 })
 
 app.post('/add', function(req, res) {

@@ -15,4 +15,7 @@ router.get('/login', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../views/members/login.html'))
 })
 
+router.get('/signUp', function(req, res, next){
+  res.sendFile(path.join(__dirname, '../views/members/signUp.html'))
+})
 module.exports = router;
