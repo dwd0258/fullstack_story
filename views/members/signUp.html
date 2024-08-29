@@ -30,14 +30,14 @@
                     </div>
                     <div class="input-group input-group-inner">
                         <span class="input-group-text">비밀번호</span>
-                        <input type="password" class="form-control" name="pw">
+                        <input type="password" class="form-control" name="pw" id="pw">
                     </div>
                     <div class="input-group input-group-inner">
                         <span class="input-group-text">비밀번호 확인</span>
-                        <input type="password" class="form-control" name="pwConfirm">
+                        <input type="password" class="form-control" name="pw2" id="pw2">
                     </div>
                     <div class="input-group d-grid input-group-inner">
-                        <button type="submit" class="btn btn-outline-success">회원가입</button>
+                        <button type="button" onclick="signUp()" class="btn btn-outline-success">회원가입</button>
                     </div>
                     <div class="input-group-inner nav-item" style="font-size: 13px; float: right; color: green;">
                         <a class="nav-link" href="/login">로그인</a>
@@ -53,5 +53,33 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 
+<script>
+    function signUp() {
+
+        if ($("#id").val() == "" || $("#pw").val() == "" || $("#pw2").val() == "") {
+            alert("모든 입력을 완료해 주세요.");
+        } 
+        else {
+            axios({
+                url: '/signUp', //app.js 의 singUp 이랑 통신
+                method: 'post',
+                data: { 
+                    id: $("#id").val(),  // 왼쪽 키 : 오른쪽 값 키는 id값
+                    pw: $("#pw").val(),
+                    pw2: $("#pw2").val(),
+                }
+            }).then(function(data) {
+                console.log(data);
+                if (data.data.ok) {
+                    alert(data.data.msg);
+                    location.href = '/login';
+                } 
+                else {
+                    alert(data.data.msg);
+                } 
+            })
+        }
+    }
+</script>
 
 </html>

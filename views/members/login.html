@@ -31,14 +31,14 @@
                     </div>
                     <div class="input-group input-group-inner">
                         <span class="input-group-text">비밀번호</span>
-                        <input type="password" class="form-control" name="pw">
+                        <input type="password" class="form-control" name="pw" id="pw">
                     </div>
                     <div class="input-group-inner" style="float: left;">
                         <input class="form-check-input" type="checkbox" name="cookie" id="cookie_id">
                         <label class="form-check-label" for="cookie_id">아이디 저장</label>
                     </div>
                     <div class="input-group d-grid input-group-inner">
-                        <button type="submit" class="btn btn-outline-success">login</button>
+                        <button type="button" class="btn btn-outline-success" onclick="login()">login</button>
                     </div>
                     <div class="input-group-inner nav-item" style="font-size: 13px; float: right; color: green;">
                         <a class="nav-link" href="/signUp">회원가입</a>
@@ -77,6 +77,20 @@
             
         })
     })
+
+    function login(){
+        console.log()
+        var id = document.querySelector("#id");
+        var pw = document.querySelector('#pw');
+
+        if(id.value == "" || pw.value == ""){
+            alert("로그인을 할 수 없습니다.")
+        }
+        else{
+            location.href = '/';
+        }
+
+    }
 
 </script>
 

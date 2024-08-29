@@ -81,10 +81,23 @@ app.post('/login', function(req,res) {
 app.post('/signUp', function(req, res){
   let id = req.body.id;
   let pw = req.body.pw;
-  console.log(id, pw)
-  tmpId = id;
-  tmpPw = pw;
-  res.send("<script>alert('회원가입에 성공했습니다.'); location.href='/login';</script>")
+  let pw2 = req.body.pw2;
+
+  console.log(id,pw,pw2);
+  if (pw === pw2) {
+    tmpId = id;
+    tmpPw = pw;
+    res.send({
+      ok: true, 
+      msg: "회원가입 성공"
+    })
+  }
+  else {
+    res.send({
+      ok: false,
+      msg: "회원가입 실패"
+    })
+  }
 })
 
 app.post('/add', function(req, res) {
