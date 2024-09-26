@@ -62,7 +62,7 @@ app.post('/login', function(req,res) {
   let id = req.body.id;
   let pw = req.body.pw;
   let cookie = req.body.cookie; //체크여부
-  
+  console.log(id,pw);
   if (id===tmpId && pw === tmpPw) {
     if (cookie) {
       res.cookie('userId', id);
@@ -70,8 +70,6 @@ app.post('/login', function(req,res) {
     else {
       res.clearCookie('userId');
     } 
-      
-    res.redirect('/')
     
   }else {
     res.send("<script>alert('로그인에 실패했습니다.'); location.href='/login';</script>")
